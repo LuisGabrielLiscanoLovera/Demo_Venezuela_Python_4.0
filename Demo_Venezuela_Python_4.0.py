@@ -93,24 +93,24 @@ class Principal(QMainWindow):
 		estado = str(self.cmbestado.currentText())
 		if estado == "S1":
 			estado_s1 = self.printer.GetS1PrinterData()
-			salida= "---Estado S1---\n"
-			salida+= "\nNumero Cajero: "					  +	str(estado_s1._cashierNumber)
-			salida+= "\nSubtotal Ventas: " 				      +	str(estado_s1._totalDailySales)
-			salida+= "\nNumero Ultima Factura: "		      +	str(estado_s1._lastInvoiceNumber)
-			salida+= "\nCantidad Facturas Hoy: " 		      +	str(estado_s1._quantityOfInvoicesToday)
+			salida= "---Estado S1---\n"																		#"""FALTAN length String de cada campo"""#
+			salida+= "\nNumero Cajero: "					  +	str(estado_s1._cashierNumber)				#nro_cajero 
+			salida+= "\nSubtotal Ventas: " 				      +	str(estado_s1._totalDailySales) 			#sub_total_ventas
+			salida+= "\nNumero Ultima Factura: "		      +	str(estado_s1._lastInvoiceNumber)			#nro_ultima_factura
+			salida+= "\nCantidad Facturas Hoy: " 		      +	str(estado_s1._quantityOfInvoicesToday)		#cant_fact_emitidas_dia
 			salida+= "\nNumero Ultima Nota de Debito: "       +	str(estado_s1._lastDebtNoteNumber)
 			salida+= "\nCantidad Notas de Debito Hoy: "       +	str(estado_s1._quantityDebtNoteToday)
 			salida+= "\nNumero Ultima Nota de Credito: "      +	str(estado_s1._lastNCNumber)
-			salida+= "\nCantidad Notas de Credito Hoy: "	  +	str(estado_s1._quantityOfNCToday)
-			salida+= "\nNumero Ultimo Documento No Fiscal: "  + str(estado_s1._numberNonFiscalDocuments)
+			salida+= "\nCantidad Notas de Credito Hoy: "	  +	str(estado_s1._quantityOfNCToday)			#cant_notas_credito
+			salida+= "\nNumero Ultimo Documento No Fiscal: "  + str(estado_s1._numberNonFiscalDocuments) 	#nro_ultimo_doc_no_fiscal
 			salida+= "\nCantidad de Documentos No Fiscales: " +	str(estado_s1._quantityNonFiscalDocuments)
 			salida+= "\nCantidad de Reportes de Auditoria: "  + str(estado_s1._auditReportsCounter)
-			salida+= "\nCantidad de Reportes Fiscales: "      + str(estado_s1._fiscalReportsCounter)
-			salida+= "\nCantidad de Reportes Z: "			  + str(estado_s1._dailyClosureCounter)
-			salida+= "\nNumero de RIF: "					  + str(estado_s1._rif)
-			salida+= "\nNumero de Registro: "				  + str(estado_s1._registeredMachineNumber)
-			salida+= "\nHora de la Impresora: "				  + str(estado_s1._currentPrinterTime)
-			salida+= "\nFecha de la Impresora: " 			  + str(estado_s1._currentPrinterDate)
+			salida+= "\nCantidad de Reportes Fiscales: "      + str(estado_s1._fiscalReportsCounter)		#contador_reporte_memoria_fiscal
+			salida+= "\nCantidad de Reportes Z: "			  + str(estado_s1._dailyClosureCounter)			#contador_cierre_diario_z
+			salida+= "\nNumero de RIF: "					  + str(estado_s1._rif)                      	#rif
+			salida+= "\nNumero de Registro: "				  + str(estado_s1._registeredMachineNumber)		#nro_registro_maqui
+			salida+= "\nHora de la Impresora: "				  + str(estado_s1._currentPrinterTime)			#hora_actual_impre
+			salida+= "\nFecha de la Impresora: " 			  + str(estado_s1._currentPrinterDate)			#fecha_actual_impre
 			
    			self.txt_informacion.setText(salida)
 
@@ -162,25 +162,25 @@ class Principal(QMainWindow):
 			salida+= "\nModo Slip: " + str(estado_s6._bit_Slip)
 			salida+= "\nModo Validacion: " + str(estado_s6._bit_Validacion)
 			self.txt_informacion.setText(salida)
-
+	
 	def obtener_reporteZ(self):
-		reporte = self.printer.GetZReport()
+		reporte = self.printer.GetZReport()													#"""FALTAN length String de cada campo"""#
 		salida= "Numero Ultimo Reporte Z: "				+ str(reporte._numberOfLastZReport)
-		salida+= "\nFecha Ultimo Reporte Z: "   		+ str(reporte._zReportDate)#1
+		salida+= "\nFecha Ultimo Reporte Z: "   		+ str(reporte._zReportDate)			
 		salida+= "\nHora Ultimo Reporte Z: "    		+ str(reporte._zReportTime)
-		salida+= "\nNumero Ultima Factura: "			+ str(reporte._numberOfLastInvoice)#2
-		salida+= "\nFecha Ultima Factura: "				+ str(reporte._lastInvoiceDate)#3
-		salida+= "\nHora Ultima Factura: "				+ str(reporte._lastInvoiceTime)
+		salida+= "\nNumero Ultima Factura: "			+ str(reporte._numberOfLastInvoice) #nro_ultima_factura
+		salida+= "\nFecha Ultima Factura: "				+ str(reporte._lastInvoiceDate)		#fecha_ultima_factura
+		salida+= "\nHora Ultima Factura: "				+ str(reporte._lastInvoiceTime)		#hora_ultima_factura
 		salida+= "\nNumero Ultima Nota de Debito: " 	+ str(reporte._numberOfLastDebitNote)
 		salida+= "\nNumero Ultima Nota de Credito: "	+ str(reporte._numberOfLastCreditNote)
 		salida+= "\nNumero Ultimo Doc No Fiscal: "  	+ str(reporte._numberOfLastNonFiscal)
-		salida+= "\nVentas Exento: "					+ str(reporte._freeSalesTax)#4
-		salida+= "\nBase Imponible Ventas IVA G: " 	    + str(reporte._generalRate1Sale)#5
-		salida+= "\nImpuesto IVA G: "					+ str(reporte._generalRate1Tax)
-		salida+= "\nBase Imponible Ventas IVA R: "		+ str(reporte._reducedRate2Sale)
-		salida+= "\nImpuesto IVA R: "				    + str(reporte._reducedRate2Tax)
-		salida+= "\nBase Imponible Ventas IVA A: "	    + str(reporte._additionalRate3Sal)
-		salida+= "\nImpuesto IVA A: "				    + str(reporte._additionalRate3Tax)
+		salida+= "\nVentas Exento: "					+ str(reporte._freeSalesTax)		#ventas_exento
+		salida+= "\nBase Imponible Ventas IVA G: " 	    + str(reporte._generalRate1Sale)	#ventas_tasa_general
+		salida+= "\nImpuesto IVA G: "					+ str(reporte._generalRate1Tax)		#impuesto_tasa_general
+		salida+= "\nBase Imponible Ventas IVA R: "		+ str(reporte._reducedRate2Sale)	#ventas_tasa_reducida
+		salida+= "\nImpuesto IVA R: "				    + str(reporte._reducedRate2Tax) 	#impuestos_tasa_reducida
+		salida+= "\nBase Imponible Ventas IVA A: "	    + str(reporte._additionalRate3Sal)	#ventas_tasa_adicional
+		salida+= "\nImpuesto IVA A: "				    + str(reporte._additionalRate3Tax)	#impuesto_tasa_adicional
 		salida+= "\nNota de Debito Exento: "		    + str(reporte._freeTaxDebit)
 		salida+= "\nBI IVA G en Nota de Debito: "	    + str(reporte._generalRateDebit)
 		salida+= "\nImpuesto IVA G en Nota de Debito: " + str(reporte._generalRateTaxDebit)
@@ -189,10 +189,10 @@ class Principal(QMainWindow):
 		salida+= "\nBI IVA A en Nota de Debito: "	    + str(reporte._additionalRateDebit)
 		salida+= "\nImpuesto IVA A en Nota de Debito: " + str(reporte._additionalRateTaxDebit)
 		salida+= "\nNota de Credito Exento: "		    + str(reporte._freeTaxDevolution)
-		salida+= "\nBI IVA G en Nota de Credito: "	    + str(reporte._generalRateDevolution)#6
+		salida+= "\nBI IVA G en Nota de Credito: "	    + str(reporte._generalRateDevolution)
 		salida+= "\nImpuesto IVA G en Nota de Credito: "+ str(reporte._generalRateTaxDevolution)
 		salida+= "\nBI IVA R en Nota de Credito: "		+ str(reporte._reducedRateDevolution)
-		salida+= "\nImpuesto IVA R en Nota de Credito: "+ str(reporte._reducedRateTaxDevolution)#7
+		salida+= "\nImpuesto IVA R en Nota de Credito: "+ str(reporte._reducedRateTaxDevolution)
 		salida+= "\nBI IVA A en Nota de Credito: "		+ str(reporte._additionalRateDevolution)
 		salida+= "\nImpuesto IVA A en Nota de Credito: "+ str(reporte._additionalRateTaxDevolution)
 		print salida
