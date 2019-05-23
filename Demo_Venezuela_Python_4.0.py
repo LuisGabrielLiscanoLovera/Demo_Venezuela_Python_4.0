@@ -1,4 +1,4 @@
-﻿from PyQt4.QtGui import QApplication, QMainWindow
+from PyQt4.QtGui import QApplication, QMainWindow
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyQt4 import uic
@@ -111,7 +111,7 @@ class Principal(QMainWindow):
 			salida+= "\nNumero de Registro: "				  + str(estado_s1._registeredMachineNumber)
 			salida+= "\nHora de la Impresora: "				  + str(estado_s1._currentPrinterTime)
 			salida+= "\nFecha de la Impresora: " 			  + str(estado_s1._currentPrinterDate)
-			print salida
+			
    			self.txt_informacion.setText(salida)
 
 		if estado == "S2":
@@ -165,36 +165,36 @@ class Principal(QMainWindow):
 
 	def obtener_reporteZ(self):
 		reporte = self.printer.GetZReport()
-		salida= "Numero Ultimo Reporte Z: "+ 			 str(reporte._numberOfLastZReport)
-		salida+= "\nFecha Ultimo Reporte Z: "+ 			 str(reporte._zReportDate)#1
-		salida+= "\nHora Ultimo Reporte Z: "+ 			 str(reporte._zReportTime)
-		salida+= "\nNumero Ultima Factura: "+ 			 str(reporte._numberOfLastInvoice)#2
-		salida+= "\nFecha Ultima Factura: "+ 			 str(reporte._lastInvoiceDate)#3
-		salida+= "\nHora Ultima Factura: "+ 			 str(reporte._lastInvoiceTime)
-		salida+= "\nNumero Ultima Nota de Debito: "+ 	 str(reporte._numberOfLastDebitNote)
-		salida+= "\nNumero Ultima Nota de Credito: "+ 	 str(reporte._numberOfLastCreditNote)
-		salida+= "\nNumero Ultimo Doc No Fiscal: "+ 	 str(reporte._numberOfLastNonFiscal)
-		salida+= "\nVentas Exento: "+ 					 str(reporte._freeSalesTax)#4
-		salida+= "\nBase Imponible Ventas IVA G: "+ 	 str(reporte._generalRate1Sale)#5
-		salida+= "\nImpuesto IVA G: "+ 					 str(reporte._generalRate1Tax)
-		salida+= "\nBase Imponible Ventas IVA R: "+ 	 str(reporte._reducedRate2Sale)
-		salida+= "\nImpuesto IVA R: "+ 					 str(reporte._reducedRate2Tax)
-		salida+= "\nBase Imponible Ventas IVA A: "+ 	 str(reporte._additionalRate3Sal)
-		salida+= "\nImpuesto IVA A: "+ 					 str(reporte._additionalRate3Tax)
-		salida+= "\nNota de Debito Exento: "+ 			 str(reporte._freeTaxDebit)
-		salida+= "\nBI IVA G en Nota de Debito: "+ 		 str(reporte._generalRateDebit)
-		salida+= "\nImpuesto IVA G en Nota de Debito: "+ str(reporte._generalRateTaxDebit)
-		salida+= "\nBI IVA R en Nota de Debito: "+ 		 str(reporte._reducedRateDebit)
-		salida+= "\nImpuesto IVA R en Nota de Debito: "+ str(reporte._reducedRateTaxDebit)
-		salida+= "\nBI IVA A en Nota de Debito: "+ 		 str(reporte._additionalRateDebit)
-		salida+= "\nImpuesto IVA A en Nota de Debito: "+ str(reporte._additionalRateTaxDebit)
-		salida+= "\nNota de Credito Exento: "+ 			 str(reporte._freeTaxDevolution)
-		salida+= "\nBI IVA G en Nota de Credito: "+ 	 str(reporte._generalRateDevolution)#6
-		salida+= "\nImpuesto IVA G en Nota de Credito: "+str(reporte._generalRateTaxDevolution)
-		salida+= "\nBI IVA R en Nota de Credito: "+ 	 str(reporte._reducedRateDevolution)
-		salida+= "\nImpuesto IVA R en Nota de Credito: "+str(reporte._reducedRateTaxDevolution)#7
-		salida+= "\nBI IVA A en Nota de Credito: "+ 	 str(reporte._additionalRateDevolution)
-		salida+= "\nImpuesto IVA A en Nota de Credito: "+str(reporte._additionalRateTaxDevolution)
+		salida= "Numero Ultimo Reporte Z: "				+ str(reporte._numberOfLastZReport)
+		salida+= "\nFecha Ultimo Reporte Z: "   		+ str(reporte._zReportDate)#1
+		salida+= "\nHora Ultimo Reporte Z: "    		+ str(reporte._zReportTime)
+		salida+= "\nNumero Ultima Factura: "			+ str(reporte._numberOfLastInvoice)#2
+		salida+= "\nFecha Ultima Factura: "				+ str(reporte._lastInvoiceDate)#3
+		salida+= "\nHora Ultima Factura: "				+ str(reporte._lastInvoiceTime)
+		salida+= "\nNumero Ultima Nota de Debito: " 	+ str(reporte._numberOfLastDebitNote)
+		salida+= "\nNumero Ultima Nota de Credito: "	+ str(reporte._numberOfLastCreditNote)
+		salida+= "\nNumero Ultimo Doc No Fiscal: "  	+ str(reporte._numberOfLastNonFiscal)
+		salida+= "\nVentas Exento: "					+ str(reporte._freeSalesTax)#4
+		salida+= "\nBase Imponible Ventas IVA G: " 	    + str(reporte._generalRate1Sale)#5
+		salida+= "\nImpuesto IVA G: "					+ str(reporte._generalRate1Tax)
+		salida+= "\nBase Imponible Ventas IVA R: "		+ str(reporte._reducedRate2Sale)
+		salida+= "\nImpuesto IVA R: "				    + str(reporte._reducedRate2Tax)
+		salida+= "\nBase Imponible Ventas IVA A: "	    + str(reporte._additionalRate3Sal)
+		salida+= "\nImpuesto IVA A: "				    + str(reporte._additionalRate3Tax)
+		salida+= "\nNota de Debito Exento: "		    + str(reporte._freeTaxDebit)
+		salida+= "\nBI IVA G en Nota de Debito: "	    + str(reporte._generalRateDebit)
+		salida+= "\nImpuesto IVA G en Nota de Debito: " + str(reporte._generalRateTaxDebit)
+		salida+= "\nBI IVA R en Nota de Debito: "	    + str(reporte._reducedRateDebit)
+		salida+= "\nImpuesto IVA R en Nota de Debito: " + str(reporte._reducedRateTaxDebit)
+		salida+= "\nBI IVA A en Nota de Debito: "	    + str(reporte._additionalRateDebit)
+		salida+= "\nImpuesto IVA A en Nota de Debito: " + str(reporte._additionalRateTaxDebit)
+		salida+= "\nNota de Credito Exento: "		    + str(reporte._freeTaxDevolution)
+		salida+= "\nBI IVA G en Nota de Credito: "	    + str(reporte._generalRateDevolution)#6
+		salida+= "\nImpuesto IVA G en Nota de Credito: "+ str(reporte._generalRateTaxDevolution)
+		salida+= "\nBI IVA R en Nota de Credito: "		+ str(reporte._reducedRateDevolution)
+		salida+= "\nImpuesto IVA R en Nota de Credito: "+ str(reporte._reducedRateTaxDevolution)#7
+		salida+= "\nBI IVA A en Nota de Credito: "		+ str(reporte._additionalRateDevolution)
+		salida+= "\nImpuesto IVA A en Nota de Credito: "+ str(reporte._additionalRateTaxDevolution)
 		print salida
   		self.txt_informacion.setText(salida)
 
@@ -416,7 +416,7 @@ class Principal(QMainWindow):
 			salida+= "\nImpuesto IVA R en Nota de Credito: "+ str(reportes[NR]._reducedRateTaxDevolution)
 			salida+= "\nBI IVA A en Nota de Credito: "+ str(reportes[NR]._additionalRateDevolution)
 			salida+= "\nImpuesto IVA A en Nota de Credito: "+ str(reportes[NR]._additionalRateTaxDevolution)+"\n"+"\n"
-			print(salida)
+			
 		self.txt_informacion.setText(Enc+salida)
 
 if __name__ == "__main__":
