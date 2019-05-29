@@ -72,6 +72,6 @@ if estado_error()[0] != "128":
     reporteS1  =  obtener_reporteS1()
     reporteZ   =  obtener_reporteZ()
     print "\nS1 :"+reporteS1  +"lenght: "+str(len(reporteS1))
-    print "\nZ  :" +reporteZ  +"lenght: "+str(len(reportez))
+    print "\nZ  :" +reporteZ  +"lenght: "+str(len(reporteZ))
     cerrar_puerto()
 else:print "error de impresora"
