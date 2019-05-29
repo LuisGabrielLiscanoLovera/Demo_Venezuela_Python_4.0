@@ -8,14 +8,15 @@ printer = Tfhka.Tfhka()
 def abrir_puerto(port):
     global printer
     try:
-        resp = printer.OpenFpctrl(port)
-        if resp:pass#print   "Impresora Conectada Correctamente  " +port
-        else:pass
+        resp = printer.OpenFpctrl(port)        
     except serial.SerialException:print "Impresora no Conectada o Error Accediendo al Puerto"
 def estado_error():
     global printer
-    stado = printer.ReadFpStatus()
-    return stado
+    std = printer.ReadFpStatus()
+    status=std[5:8]
+    
+    
+    return status,std[17:]
 def obtener_reporteZ():
     global printer
     reporte = printer.GetZReport()
@@ -41,7 +42,6 @@ def obtener_reporteZ():
     rZ+=str(reporte._freeTaxDevolution).replace(".","").zfill(10)              #20 L10
    
     return str(rZ)
-
 def obtener_reporteS1():
     global printer
     estado_s1 = printer.GetS1PrinterData()
@@ -60,16 +60,18 @@ def obtener_reporteS1():
     rS+= str(estado_s1._quantityOfNCToday).replace(".","").zfill(7)                         #13 L7
     rS+= str(estado_s1._numberNonFiscalDocuments).replace(".","").zfill(10)                 #14 L10
     return str(rS)
-
-
 def cerrar_puerto():
     global printer
     resp = printer.CloseFpctrl()
     if not resp:pass
     else:pass
 
-if abrir_puerto("COM18"):print "genial"
-print estado_error()
-print obtener_reporteS1()
-#print obtener_reporteZ()
-cerrar_puerto()
+abrir_puerto("COM18")
+#print estado_error()[1]
+if estado_error()[0] != "128":
+    reporteS1  =  obtener_reporteS1()
+    reporteZ   =  obtener_reporteZ()
+    print "\nS1 :"+reporteS1+"lenght"+len(reporteS1)
+    print "\nZ  :" +reporteZ  +"lenght"+len(reporteS1)
+    cerrar_puerto()
+else:print "error de impresora"
