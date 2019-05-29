@@ -71,7 +71,7 @@ abrir_puerto("COM18")
 if estado_error()[0] != "128":
     reporteS1  =  obtener_reporteS1()
     reporteZ   =  obtener_reporteZ()
-    print "\nS1 :"+reporteS1+"lenght"+len(reporteS1)
-    print "\nZ  :" +reporteZ  +"lenght"+len(reporteS1)
+    print "\nS1 :"+reporteS1  +"lenght: "+str(len(reporteS1))
+    print "\nZ  :" +reporteZ  +"lenght: "+str(len(reportez))
     cerrar_puerto()
 else:print "error de impresora"
