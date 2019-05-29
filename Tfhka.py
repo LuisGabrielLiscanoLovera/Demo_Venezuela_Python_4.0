@@ -31,13 +31,13 @@ class tf_ve_ifpython:
 
 #Funcion ABRIR
   def OpenFpctrl(self, port):
-    if not self.bandera:
-      try:
-        self.ser=serial.Serial(port=port, baudrate=self.Port.baudRate, bytesize=self.Port.dataBits, parity=self.Port.parity, stopbits=self.Port.stopBits, timeout=self.Port.readTimeOut, writeTimeout=self.Port.writeTimeOut, xonxoff=0, rtscts=0)##Find out what are xonxoff, and rtscts for
-        #print "baudrate", self.Port.baudRate
-        self.bandera=True
-        return True
-      except Exception as e:return False
+    try:
+      self.ser=serial.Serial(port=port, baudrate=self.Port.baudRate, bytesize=self.Port.dataBits, parity=self.Port.parity, stopbits=self.Port.stopBits, timeout=self.Port.readTimeOut, writeTimeout=self.Port.writeTimeOut, xonxoff=0, rtscts=0)##Find out what are xonxoff, and rtscts for
+      self.bandera=True
+      #print "baudrate", self.Port.baudRate,"\nbandera",self.bandera
+
+      return self.bandera
+    except Exception as e:return self.bandera
 #Funcion CERRAR
   def CloseFpctrl(self):
     if self.bandera:
@@ -401,7 +401,7 @@ class tf_ve_ifpython:
       self.error = ''
       error = "112 "
     elif er == 128:     # Error en la comunicacion
-      self.error = 'CTS en falso'
+      self.error = 'CTS en falso Error en la comunicacion con la impresora fiscal'
       error = "128 ";
     elif er == 137:     # No hay respuesta
       self.error = 'No hay respuesta'
